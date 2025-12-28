@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>可配置图表组件</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #f5f5f5;
+        width: 100vw;
+        height: 100vh;
+      }
+
+      canvas {
+        display: block;
+        margin: 20px auto;
+        border: 1px solid #ddd;
+        background-color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="chartCanvas"></canvas>
+
+    <script type="module">
+      // 导入图表渲染器
+      import LineChart from "./LineChart.js";
+      import TextUtil from "../util/TextUtil.js";
+
+      // 获取canvas元素
+      const canvas = document.getElementById("chartCanvas");
+      const width = document.body.clientWidth;
+      const height = document.body.clientHeight;
+      canvas.width = width * 0.8;
+      canvas.height = height * 0.8;
+
+      // 图表配置
+      const chartConfig = {
+        // 图表区域配置
+        chartArea: {
+          x: 80,
+          y: 50,
+          width: canvas.width - 180,
+          height: canvas.height - 120,
+        },
+
+        // 图表标题
+        title: "销售数据分析图",
+
+        // 数据点间距
+        spacing: 40,
+
+        // 缩放和平移配置
+        scale: 1,
+        transX: 0,
+
+        // Y轴配置
+        yAxis: {
+          left: [
+            {
+              id: "sales",
+              visible: true,
+              label: "销售量",
+              unit: "",
+              width: 80,
+              formatter: (i) => i.toFixed(0),
+            },
+          ],
+          right: [
+            {
+              id: "price",
+              visible: true,
+              label: "价格",
+              unit: "元",
+              width: 80,
+              formatter: TextUtil.price,
+            },
+            {
+              id: "growth",
+              visible: true,
+              label: "增长率",
+              unit: "",
+              width: 60,
+              formatter: TextUtil.percent,
+            },
+          ],
+        },
+
+        // 数据系列配置
+        series: [
+          {
+            prop: "bar1",
+            name: "销售量",
+            type: "bar",
+            yAxis: "left",
+            yAxisIndex: 0,
+            color: "#4CAF50",
+            visible: true,
+          },
+          {
+            prop: "line1",
+            name: "增长率",
+            type: "line",
+            yAxis: "right",
+            yAxisIndex: 1,
+            color: "#2196F3",
+            visible: true,
+          },
+          {
+            prop: "line2",
+            name: "利润率",
+            type: "line",
+            yAxis: "right",
+            yAxisIndex: 1,
+            color: "#FF9800",
+            visible: true,
+          },
+          {
+            prop: "area1",
+            name: "市场份额",
+            type: "area",
+            yAxis: "right",
+            yAxisIndex: 1,
+            color: "#9C27B0",
+            visible: true,
+          },
+          {
+            prop: "line3",
+            name: "商品价格",
+            type: "line",
+            yAxis: "right",
+            yAxisIndex: 0,
+            color: "#F44336",
+            visible: true,
+          },
+        ],
+
+        // 数据标签
+        labels: [],
+      };
+
+      // 生成模拟数据
+      function generateData() {
+        const data = [];
+        const labels = [];
+        for (let i = 0; i < 100; i++) {
+          // 使用正弦函数结合随机数生成更自然的模拟数据
+          const bar1 = Math.max(
+            0,
+            200 + 100 * Math.sin(i / 50) + 50 * Math.random()
+          );
+          const line1 = Math.max(
+            0,
+            8 + 5 * Math.cos(i / 30) + 3 * Math.random()
+          );
+          const line2 = Math.max(
+            0,
+            15 + 7 * Math.sin(i / 40) + 4 * Math.random()
+          );
+          const area1 = Math.max(
+            0,
+            30 + 20 * Math.cos(i / 60) + 10 * Math.random()
+          );
+          const line3 = Math.max(
+            0,
+            50 + 30 * Math.sin(i / 70) + 20 * Math.random()
+          );
+
+          data.push({ bar1, line1, line2, line3, area1 });
+          labels.push(`数据${i + 1}`);
+        }
+
+        return { labels, data };
+      }
+
+      // 填充配置数据
+      const { data, labels } = generateData();
+      chartConfig.data = data;
+      chartConfig.labels = labels;
+
+      // 初始化图表
+      function initChart() {
+        // 创建图表渲染器实例
+        const chart = new LineChart(canvas, chartConfig);
+        chart.init();
+      }
+
+      // 页面加载完成后初始化图表
+      window.addEventListener("load", initChart);
+    </script>
+  </body>
+</html>

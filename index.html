@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DSL布局测试</title>
+    <link rel="stylesheet" href="render/css/render.css" />
+    <style>
+      body {
+        width: 100vw;
+        height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <script type="module">
+      import DslParser from "./render/DslParser.js";
+      import Http from "./util/Http.js";
+
+      // 应用启动函数
+      function startApp() {
+        // 获取地址栏页面ID参数
+        const urlParams = new URLSearchParams(window.location.search);
+        const pageId = urlParams.get("id");
+        if (!pageId) {
+          alert("页面ID不能为空");
+          return;
+        }
+        Http.request(
+          "http://localhost:8080/api/page-configs/" + pageId,
+          "GET",
+          null,
+          (data) => {
+            if (!data.config) {
+              return;
+            }
+            const config = JSON.parse(data.config);
+            const width = document.body.clientWidth;
+            const height = document.body.clientHeight;
+            config.styles.width = width + "px";
+            config.styles.height = height + "px";
+            document.body.appendChild(new DslParser(config).parse().render());
+          }
+        );
+      }
+      // 页面加载完成后启动应用
+      document.addEventListener("DOMContentLoaded", startApp);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>K线图组件</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0px;
+        background-color: #f5f5f5;
+        width: 100vw;
+        height: 100vh;
+        display: grid;
+        align-items: center;
+        justify-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="klineCanvas"></canvas>
+
+    <script type="module">
+      // 导入K线图组件
+      import KlineChart from "./KlineChart.js";
+      import TextUtil from "../util/TextUtil.js";
+
+      // 获取canvas元素
+      const canvas = document.getElementById("klineCanvas");
+
+      // 生成模拟K线数据
+      function generateKlineData(count) {
+        const data = [];
+        const labels = [];
+        let price = 100; // 初始价格
+
+        for (let i = 0; i < count; i++) {
+          // 随机生成价格波动
+          const changePercent = (Math.random() - 0.5) * 0.1; // ±5%的波动
+          const change = price * changePercent;
+
+          const open = price;
+          const latest = price + change;
+          const high =
+            Math.max(open, latest) + Math.abs(change) * Math.random();
+          const low = Math.min(open, latest) - Math.abs(change) * Math.random();
+
+          // 确保高低价格合理
+          const finalHigh = Math.max(high, open, latest);
+          const finalLow = Math.min(low, open, latest);
+
+          // 生成交易量和交易金额数据
+          const share = Math.round(1000 + Math.random() * 9000);
+          const amount = Math.round(((open + latest) / 2) * share);
+
+          data.push({
+            open: parseFloat(open.toFixed(2)),
+            high: parseFloat(finalHigh.toFixed(2)),
+            low: parseFloat(finalLow.toFixed(2)),
+            latest: parseFloat(latest.toFixed(2)),
+            share: share,
+            amount: amount,
+          });
+
+          price = latest;
+          labels.push("Day " + (i + 1));
+        }
+
+        // 计算均线数据
+        for (let i = 0; i < data.length; i++) {
+          // 5日均线
+          if (i >= 4) {
+            let sum = 0;
+            for (let j = 0; j < 5; j++) {
+              sum += data[i - j].latest;
+            }
+            data[i].ma5 = parseFloat((sum / 5).toFixed(2));
+          }
+
+          // 10日均线
+          if (i >= 9) {
+            let sum = 0;
+            for (let j = 0; j < 10; j++) {
+              sum += data[i - j].latest;
+            }
+            data[i].ma10 = parseFloat((sum / 10).toFixed(2));
+          }
+
+          // 30日均线
+          if (i >= 29) {
+            let sum = 0;
+            for (let j = 0; j < 30; j++) {
+              sum += data[i - j].latest;
+            }
+            data[i].ma30 = parseFloat((sum / 30).toFixed(2));
+          }
+
+          // 60日均线
+          if (i >= 59) {
+            let sum = 0;
+            for (let j = 0; j < 60; j++) {
+              sum += data[i - j].latest;
+            }
+            data[i].ma60 = parseFloat((sum / 60).toFixed(2));
+          }
+        }
+
+        return { data, labels };
+      }
+
+      // 生成模拟数据
+      const chartData = generateKlineData(1000);
+
+      // 内部生成配置
+      const config = {
+        title: "",
+        spacing: 20,
+        scale: 1,
+        transX: 0,
+        colors: {
+          rising: "#ff0000",
+          falling: "#00ff00",
+          share: "#999999",
+          amount: "#0000ff",
+          axis: "#333",
+          grid: "#eee",
+          hidden: "#999",
+        },
+        maList: [
+          { key: "ma5", name: "5日均线", color: "#ff9900" },
+          { key: "ma10", name: "10日均线", color: "#9900ff" },
+          { key: "ma30", name: "30日均线", color: "#0099ff" },
+          { key: "ma60", name: "60日均线", color: "#ff00ff" },
+        ],
+        formatter: {
+          kline: TextUtil.price,
+          share: TextUtil.share,
+          amount: TextUtil.amount,
+        },
+      };
+
+      // 初始化图表
+      function initChart() {
+        config.title = "股票价格走势";
+        config.labels = chartData.labels;
+        config.data = chartData.data;
+        // 创建K线图实例
+        const klineChart = new KlineChart(canvas, config);
+        klineChart.init();
+      }
+
+      // 页面加载完成后初始化图表
+      window.addEventListener("load", (e) => {
+        const width = document.body.clientWidth;
+        const height = document.body.clientHeight;
+        canvas.width = width * 0.8;
+        canvas.height = height * 0.8;
+        initChart();
+      });
+    </script>
+  </body>
+</html>
