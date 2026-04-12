@@ -51,19 +51,19 @@ export default class LineChart extends Base {
     });
     this.updateConfig();
     this.updateData();
-    new Chart(element, this.config).init();
+    this.initChart();
     return element;
   }
 
   refreshConfig() {
     this.updateConfig();
     this.updateData();
-    new Chart(this.element, this.config).init();
+    this.initChart();
   }
 
   refreshData() {
     this.updateData();
-    new Chart(this.element, this.config).init();
+    this.initChart();
   }
 
   updateConfig() {
@@ -116,5 +116,11 @@ export default class LineChart extends Base {
   }
   getVal(val, defVal) {
     return val ? parseFloat(Val.extract(val)[1]) : defVal;
+  }
+
+  initChart() {
+    this.element.width = Val.extract(this.styles.width)[1];
+    this.element.height = Val.extract(this.styles.height)[1];
+    new Chart(this.element, this.config).init();
   }
 }

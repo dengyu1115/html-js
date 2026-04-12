@@ -51,7 +51,7 @@ export default class EventRender {
     const inputEl = document.createElement("textarea");
     inputEl.id = prop + "Prop";
     inputEl.rows = 5;
-    inputEl.innerText = obj[prop] || "";
+    inputEl.value = obj[prop] || "";
     inputEl.placeholder =
       "输入JavaScript代码，例如: alert('" + label + "事件')";
     const btnEl = document.createElement("button");

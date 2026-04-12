@@ -29,6 +29,22 @@ export default class TemplatePanel {
       className: "template-content",
     });
     panel.appendChild(this.elements.templateContent);
+    // 创建组件树操作按钮组
+    const compBtns = this.designer.createElement("div", {
+      className: "btns",
+    });
+
+    // 创建清空操作按钮
+    const refreshBtn = this.designer.createElement("button", {
+      className: "btn",
+      id: "refreshTemplates",
+      textContent: "刷新",
+    });
+    refreshBtn.addEventListener("click", () => {
+      this.query();
+    });
+    compBtns.appendChild(refreshBtn);
+    panel.appendChild(compBtns);
     return panel;
   }
 

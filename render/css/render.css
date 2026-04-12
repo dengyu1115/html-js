@@ -17,6 +17,11 @@ button {
   cursor: pointer;
 }
 
+textarea {
+  white-space: pre;
+  word-wrap: normal;
+}
+
 ::-webkit-scrollbar {
   width: 1px;
   height: 1px;

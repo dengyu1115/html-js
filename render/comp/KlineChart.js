@@ -11,9 +11,6 @@ export default class KlineChart extends Base {
   render() {
     const element = this.createElement("canvas");
     this.element = element;
-    // 添加canvas到容器
-    element.width = Val.extract(this.styles.width)[1];
-    element.height = Val.extract(this.styles.height)[1];
     this.config = {
       title: this.props.title,
       spacing: 20,
@@ -34,19 +31,19 @@ export default class KlineChart extends Base {
     });
     this.updateConfig();
     this.updateData();
-    new Chart(element, this.config).init();
+    this.initChart();
     return element;
   }
 
   refreshConfig() {
     this.updateConfig();
     this.updateData();
-    new Chart(this.element, this.config).init();
+    this.initChart();
   }
 
   refreshData() {
     this.updateData();
-    new Chart(this.element, this.config).init();
+    this.initChart();
   }
 
   updateConfig() {
@@ -74,5 +71,11 @@ export default class KlineChart extends Base {
       return null;
     }
     return new Function(["value", "datum"], formatter);
+  }
+
+  initChart() {
+    this.element.width = Val.extract(this.styles.width)[1];
+    this.element.height = Val.extract(this.styles.height)[1];
+    new Chart(this.element, this.config).init();
   }
 }

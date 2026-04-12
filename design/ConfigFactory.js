@@ -3,6 +3,7 @@ import LineChart from "./comp/LineChart.js";
 import Checkbox from "./comp/Checkbox.js";
 import Container from "./comp/Container.js";
 import Input from "./comp/Input.js";
+import TextArea from "./comp/TextArea.js";
 import Page from "./comp/Page.js";
 import Panel from "./comp/Panel.js";
 import Radio from "./comp/Radio.js";
@@ -38,6 +39,8 @@ export default class ConfigFactory {
         return Text.getDef();
       case "input":
         return Input.getDef();
+      case "textarea":
+        return TextArea.getDef();
       case "button":
         return Button.getDef();
       case "panel":

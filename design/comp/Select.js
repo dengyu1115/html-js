@@ -15,6 +15,8 @@ export default class Select extends Base {
           { label: "选项2", value: "2" },
           { label: "选项3", value: "3" },
         ],
+        multiple: "false",
+        readOnly: "false",
       },
       styles: {
         width: "100px",
@@ -50,6 +52,17 @@ export default class Select extends Base {
                 type: "select",
                 prop: "multiple",
                 label: "是否多选",
+                options: [
+                  { label: "否", prop: "false" },
+                  { label: "是", prop: "true" },
+                ],
+              },
+            ],
+            [
+              {
+                type: "select",
+                prop: "readOnly",
+                label: "是否只读",
                 options: [
                   { label: "否", prop: "false" },
                   { label: "是", prop: "true" },
@@ -101,6 +114,12 @@ export default class Select extends Base {
       configData: [
         { label: "选项数据", prop: "options", callback: "refreshOptions" },
         { label: "选中数据", prop: "value", callback: "refreshValue" },
+        {
+          prop: "readOnly",
+          pathLabel: "只读绑定",
+          noData: true,
+          callback: "refreshReadOnly",
+        },
       ],
     };
   }

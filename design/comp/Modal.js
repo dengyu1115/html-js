@@ -69,6 +69,7 @@ export default class Modal extends Base {
         "panel",
         "text",
         "input",
+        "textarea",
         "select",
         "radio",
         "checkbox",

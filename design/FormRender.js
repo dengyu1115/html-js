@@ -104,9 +104,9 @@ export default class FormRender {
   buildTextarea(obj, prop, type, defVal, rows) {
     const input = document.createElement("textarea");
     if (type === "json") {
-      input.innerText = obj[prop] ? JSON.stringify(obj[prop]) : defVal;
+      input.value = obj[prop] ? JSON.stringify(obj[prop]) : defVal;
     } else {
-      input.innerText = obj[prop] || defVal;
+      input.value = obj[prop] || defVal;
     }
     input.rows = rows || 9;
     return input;

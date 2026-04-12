@@ -68,6 +68,7 @@ export default class Page extends Base {
         "panel",
         "text",
         "input",
+        "textarea",
         "date",
         "time",
         "select",

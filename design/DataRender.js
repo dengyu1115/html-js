@@ -98,7 +98,7 @@ export default class DataRender {
     const inputEl = document.createElement("textarea");
     inputEl.id = prop + "Prop";
     inputEl.rows = 15;
-    inputEl.value = data ? JSON.stringify(data) : "";
+    inputEl.value = data ? JSON.stringify(data, null, 2) : "";
     inputEl.placeholder = "输入json格式数据";
     return inputEl;
   }

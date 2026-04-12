@@ -66,6 +66,7 @@ export default class Panel extends Base {
         "container",
         "panel",
         "text",
+        "textarea",
         "input",
         "select",
         "radio",

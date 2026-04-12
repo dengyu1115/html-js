@@ -51,6 +51,7 @@ export default class Container extends Base {
         "panel",
         "text",
         "input",
+        "textarea",
         "date",
         "time",
         "select",
