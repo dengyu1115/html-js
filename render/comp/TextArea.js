@@ -84,7 +84,7 @@ export default class TextArea extends Base {
     this.value = value;
     const path = this.data.value?.path;
     if (path) {
-      Reactive.set(data, path, this.value, this);
+      Reactive.set(window.data, path, this.value, this);
     }
   }
 }

@@ -1,0 +1,2008 @@
+{
+  "page": {
+    "name": "页面",
+    "props": {
+      "className": "component page",
+      "pageId": "page0001"
+    },
+    "styles": {
+      "gridAutoFlow": "column",
+      "borderWidth": "1px",
+      "borderColor": "#bebaba",
+      "borderStyle": "solid",
+      "borderRadius": "3px",
+      "overflow": "auto",
+      "margin": "0px",
+      "padding": "0px",
+      "width": "1280px",
+      "height": "768px"
+    },
+    "events": {},
+    "configProps": [
+      {
+        "config": [
+          [
+            {
+              "type": "input",
+              "prop": "className",
+              "label": "样式类名",
+              "defVal": "",
+              "inputType": "text"
+            }
+          ],
+          [
+            {
+              "type": "input",
+              "prop": "pageId",
+              "label": "页面ID",
+              "defVal": "",
+              "inputType": "text"
+            }
+          ]
+        ]
+      }
+    ],
+    "configStyles": ["direction", "size", "border", "spacing", "alignment"],
+    "configEvents": ["load"],
+    "configData": [
+      {
+        "label": "页面全局数据",
+        "prop": "global",
+        "noPath": true
+      }
+    ],
+    "data": {},
+    "configChildren": [
+      "container",
+      "modal",
+      "panel",
+      "text",
+      "input",
+      "textarea",
+      "date",
+      "time",
+      "select",
+      "radio",
+      "checkbox",
+      "button",
+      "table",
+      "tree",
+      "linechart",
+      "klinechart",
+      "tabheader",
+      "tabbody"
+    ]
+  },
+  "container": {
+    "name": "容器",
+    "props": {
+      "className": "component container",
+      "tag": "div",
+      "show": "true"
+    },
+    "styles": {
+      "gridAutoFlow": "column",
+      "borderWidth": "1px",
+      "borderColor": "#bebaba",
+      "borderStyle": "solid",
+      "borderRadius": "3px",
+      "overflow": "auto",
+      "margin": "0px",
+      "width": "50%",
+      "height": "50%",
+      "padding": "0px"
+    },
+    "events": {},
+    "configProps": [
+      {
+        "config": [
+          [
+            {
+              "type": "input",
+              "prop": "className",
+              "label": "样式类名",
+              "defVal": "",
+              "inputType": "text"
+            }
+          ]
+        ]
+      }
+    ],
+    "configStyles": ["direction", "size", "border", "spacing", "alignment"],
+    "configEvents": [],
+    "configChildren": [
+      "container",
+      "panel",
+      "text",
+      "input",
+      "textarea",
+      "date",
+      "time",
+      "select",
+      "radio",
+      "checkbox",
+      "button",
+      "table",
+      "tree",
+      "linechart",
+      "klinechart",
+      "tabheader",
+      "tabbody"
+    ],
+    "configData": [
+      {
+        "prop": "show",
+        "pathLabel": "显示绑定",
+        "noData": true,
+        "callback": "refreshShow"
+      }
+    ]
+  },
+  "modal": {
+    "name": "模态框",
+    "props": {
+      "className": "component modal"
+    },
+    "styles": {
+      "width": "50%",
+      "height": "50%",
+      "backgroundColor": "#ffffff",
+      "borderWidth": "1px",
+      "borderColor": "#bebaba",
+      "borderStyle": "solid",
+      "borderRadius": "5px",
+      "boxShadow": "0 4px 8px rgba(0,0,0,0.1)",
+      "zIndex": "1000"
+    },
+    "events": {},
+    "data": {
+      "show": {
+        "path": "",
+        "data": false
+      }
+    },
+    "configProps": [
+      {
+        "config": [
+          [
+            {
+              "type": "input",
+              "prop": "className",
+              "label": "样式类名",
+              "defVal": "",
+              "inputType": "text"
+            }
+          ],
+          [
+            {
+              "type": "input",
+              "prop": "prop",
+              "label": "数据属性",
+              "defVal": "",
+              "inputType": "text"
+            }
+          ]
+        ]
+      }
+    ],
+    "configStyles": ["size", "border"],
+    "configData": [
+      {
+        "label": "是否展示",
+        "prop": "show",
+        "callback": "refreshShow"
+      }
+    ],
+    "configChildren": [
+      "container",
+      "panel",
+      "text",
+      "input",
+      "textarea",
+      "select",
+      "radio",
+      "checkbox",
+      "button",
+      "table",
+      "tree",
+      "linechart",
+      "klinechart"
+    ]
+  },
+  "text": {
+    "name": "文本",
+    "props": {
+      "className": "component text",
+      "text": "文本内容",
+      "tag": "div"
+    },
+    "styles": {
+      "gridAutoFlow": "column",
+      "borderWidth": "1px",
+      "borderColor": "#bebaba",
+      "borderStyle": "solid",
+      "borderRadius": "3px",
+      "overflow": "auto",
+      "margin": "0px",
+      "padding": "0px"
+    },
+    "events": { "click": "" },
+    "data": {
+      "text": {
+        "path": ""
+      }
+    },
+    "configProps": [
+      {
+        "config": [
+          [
+            {
+              "type": "input",
+              "prop": "className",
+              "label": "样式类名",
+              "defVal": "",
+              "inputType": "text"
+            }
+          ],
+          [
+            {
+              "type": "input",
+              "prop": "text",
+              "label": "文本内容",
+              "defVal": "",
+              "inputType": "text"
+            },
+            {
+              "type": "input",
+              "prop": "tag",
+              "label": "HTML标签",
+              "defVal": "",
+              "inputType": "text"
+            }
+          ]
+        ]
+      }
+    ],
+    "configStyles": ["font", "size", "border", "spacing", "alignment"],
+    "configEvents": ["click"],
+    "configData": [
+      {
+        "pathLabel": "文本绑定",
+        "prop": "text",
+        "noData": true,
+        "callback": "refreshText"
+      },
+      {
+        "prop": "show",
+        "pathLabel": "显示绑定",
+        "noData": true,
+        "callback": "refreshShow"
+      }
+    ]
+  },
+  "input": {
+    "name": "输入框",
+    "props": {
+      "className": "component input",
+      "value": "",
+      "placeholder": "请输入内容",
+      "type": "text",
+      "readonly": "false",
+      "disabled": "false"
+    },
+    "styles": {
+      "borderWidth": "1px",
+      "borderColor": "#bebaba",
+      "borderStyle": "solid",
+      "borderRadius": "3px",
+      "overflow": "auto",
+      "margin": "0px",
+      "padding": "0px"
+    },
+    "events": { "input": "", "focus": "", "blur": "" },
+    "configProps": [
+      {
+        "config": [
+          [
+            {
+              "type": "input",
+              "prop": "className",
+              "label": "样式类名",
+              "defVal": "",
+              "inputType": "text"
+            }
+          ],
+          [
+            {
+              "type": "select",
+              "prop": "type",
+              "label": "类型",
+              "options": [
+                { "label": "文本", "prop": "text" },
+                { "label": "数字", "prop": "number" },
+                { "label": "密码", "prop": "password" },
+                { "label": "颜色", "prop": "color" }
+              ]
+            }
+          ],
+          [
+            {
+              "type": "input",
+              "prop": "value",
+              "label": "值",
+              "defVal": "",
+              "inputType": "text"
+            }
+          ],
+          [
+            {
+              "type": "input",
+              "prop": "placeholder",
+              "label": "placeholder",
+              "defVal": "",
+              "inputType": "text"
+            }
+          ],
+          [
+            {
+              "type": "select",
+              "prop": "readOnly",
+              "label": "只读",
+              "options": [
+                { "label": "否", "prop": "false" },
+                { "label": "是", "prop": "true" }
+              ]
+            },
+            {
+              "type": "select",
+              "prop": "disabled",
+              "label": "禁用",
+              "options": [
+                { "label": "否", "prop": "false" },
+                { "label": "是", "prop": "true" }
+              ]
+            }
+          ]
+        ]
+      }
+    ],
+    "configStyles": ["font", "size", "border", "spacing", "alignment"],
+    "configEvents": ["input", "focus", "blur"],
+    "configData": [
+      {
+        "prop": "value",
+        "pathLabel": "数据绑定",
+        "noData": true,
+        "callback": "refreshValue"
+      },
+      {
+        "prop": "show",
+        "pathLabel": "显示绑定",
+        "noData": true,
+        "callback": "refreshShow"
+      },
+      {
+        "prop": "readOnly",
+        "pathLabel": "只读绑定",
+        "noData": true,
+        "callback": "refreshReadOnly"
+      },
+      {
+        "prop": "disabled",
+        "pathLabel": "禁用绑定",
+        "noData": true,
+        "callback": "refreshDisabled"
+      }
+    ]
+  },
+  "textarea": {
+    "name": "文本域",
+    "props": {
+      "className": "component textarea",
+      "value": "",
+      "placeholder": "请输入内容",
+      "rows": 3,
+      "cols": 20,
+      "readonly": "false",
+      "disabled": "false",
+      "maxlength": "",
+      "minlength": ""
+    },
+    "styles": {
+      "borderWidth": "1px",
+      "borderColor": "#bebaba",
+      "borderStyle": "solid",
+      "borderRadius": "3px",
+      "overflow": "auto",
+      "margin": "0px",
+      "padding": "5px",
+      "resize": "vertical"
+    },
+    "events": { "input": "", "focus": "", "blur": "", "change": "" },
+    "configProps": [
+      {
+        "config": [
+          [
+            {
+              "type": "input",
+              "prop": "className",
+              "label": "样式类名",
+              "defVal": "",
+              "inputType": "text"
+            }
+          ],
+          [
+            {
+              "type": "input",
+              "prop": "value",
+              "label": "值",
+              "defVal": "",
+              "inputType": "text"
+            }
+          ],
+          [
+            {
+              "type": "input",
+              "prop": "placeholder",
+              "label": "占位符",
+              "defVal": "",
+              "inputType": "text"
+            }
+          ],
+          [
+            {
+              "type": "input",
+              "prop": "rows",
+              "label": "行数",
+              "defVal": "3",
+              "inputType": "number"
+            },
+            {
+              "type": "input",
+              "prop": "cols",
+              "label": "列数",
+              "defVal": "20",
+              "inputType": "number"
+            }
+          ],
+          [
+            {
+              "type": "input",
+              "prop": "maxlength",
+              "label": "最大长度",
+              "defVal": "",
+              "inputType": "number"
+            },
+            {
+              "type": "input",
+              "prop": "minlength",
+              "label": "最小长度",
+              "defVal": "",
+              "inputType": "number"
+            }
+          ],
+          [
+            {
+              "type": "select",
+              "prop": "readOnly",
+              "label": "只读",
+              "options": [
+                { "label": "否", "prop": "false" },
+                { "label": "是", "prop": "true" }
+              ]
+            },
+            {
+              "type": "select",
+              "prop": "disabled",
+              "label": "禁用",
+              "options": [
+                { "label": "否", "prop": "false" },
+                { "label": "是", "prop": "true" }
+              ]
+            }
+          ]
+        ]
+      }
+    ],
+    "configStyles": ["font", "size", "border", "spacing", "alignment"],
+    "configEvents": ["input", "focus", "blur", "change"],
+    "configData": [
+      {
+        "prop": "value",
+        "pathLabel": "数据绑定",
+        "noData": true,
+        "callback": "refreshValue"
+      },
+      {
+        "prop": "show",
+        "pathLabel": "显示绑定",
+        "noData": true,
+        "callback": "refreshShow"
+      },
+      {
+        "prop": "readOnly",
+        "pathLabel": "只读绑定",
+        "noData": true,
+        "callback": "refreshReadOnly"
+      },
+      {
+        "prop": "disabled",
+        "pathLabel": "禁用绑定",
+        "noData": true,
+        "callback": "refreshDisabled"
+      }
+    ]
+  },
+  "button": {
+    "name": "按钮",
+    "props": {
+      "className": "component button",
+      "text": "按钮"
+    },
+    "styles": {
+      "borderWidth": "1px",
+      "borderColor": "#bebaba",
+      "borderStyle": "solid",
+      "borderRadius": "3px",
+      "overflow": "auto",
+      "margin": "0px",
+      "padding": "0px"
+    },
+    "events": { "click": "" },
+    "configProps": [
+      {
+        "config": [
+          [
+            {
+              "type": "input",
+              "prop": "className",
+              "label": "样式类名",
+              "defVal": "",
+              "inputType": "text"
+            }
+          ],
+          [
+            {
+              "type": "input",
+              "prop": "text",
+              "label": "按钮文本",
+              "defVal": "",
+              "inputType": "text"
+            }
+          ]
+        ]
+      }
+    ],
+    "configStyles": ["font", "size", "border", "spacing", "alignment"],
+    "configEvents": ["click"],
+    "configData": [
+      {
+        "prop": "text",
+        "pathLabel": "文本绑定",
+        "noData": true,
+        "callback": "refreshText"
+      },
+      {
+        "prop": "show",
+        "pathLabel": "显示绑定",
+        "noData": true,
+        "callback": "refreshShow"
+      },
+      {
+        "prop": "disabled",
+        "pathLabel": "禁用绑定",
+        "noData": true,
+        "callback": "refreshDisabled"
+      }
+    ]
+  },
+  "panel": {
+    "name": "面板",
+    "props": {
+      "className": "component panel",
+      "title": "面板标题"
+    },
+    "styles": {
+      "gridAutoFlow": "column",
+      "borderWidth": "1px",
+      "borderColor": "#bebaba",
+      "borderStyle": "solid",
+      "borderRadius": "3px",
+      "overflow": "auto",
+      "margin": "0px",
+      "padding": "0px"
+    },
+    "events": {},
+    "data": {
+      "show": {
+        "path": "",
+        "data": true
+      }
+    },
+    "configProps": [
+      {
+        "config": [
+          [
+            {
+              "type": "input",
+              "prop": "className",
+              "label": "样式类名",
+              "defVal": "",
+              "inputType": "text"
+            }
+          ],
+          [
+            {
+              "type": "input",
+              "prop": "title",
+              "label": "面板标题",
+              "defVal": "",
+              "inputType": "text"
+            }
+          ]
+        ]
+      }
+    ],
+    "configStyles": ["direction", "size", "border", "spacing", "alignment"],
+    "configEvents": [],
+    "configData": [
+      {
+        "label": "是否展示",
+        "prop": "show",
+        "callback": "refreshShow"
+      }
+    ],
+    "configChildren": [
+      "container",
+      "panel",
+      "text",
+      "textarea",
+      "input",
+      "select",
+      "radio",
+      "checkbox",
+      "button",
+      "table",
+      "tree",
+      "linechart",
+      "klinechart",
+      "tabheader",
+      "tabbody"
+    ]
+  },
+  "select": {
+    "name": "下拉框",
+    "props": {
+      "className": "component select",
+      "options": [
+        { "label": "选项1", "value": "1" },
+        { "label": "选项2", "value": "2" },
+        { "label": "选项3", "value": "3" }
+      ],
+      "multiple": "false",
+      "readOnly": "false"
+    },
+    "styles": {
+      "width": "100px",
+      "height": "30px",
+      "gridAutoFlow": "column",
+      "borderWidth": "1px",
+      "borderColor": "#bebaba",
+      "borderStyle": "solid",
+      "borderRadius": "3px",
+      "overflow": "auto",
+      "margin": "0px",
+      "padding": "0px"
+    },
+    "events": { "change": "" },
+    "data": {
+      "value": { "path": "", "data": null },
+      "options": { "path": "", "data": null }
+    },
+    "configProps": [
+      {
+        "config": [
+          [
+            {
+              "type": "input",
+              "prop": "className",
+              "label": "样式类名",
+              "defVal": "",
+              "inputType": "text"
+            }
+          ],
+          [
+            {
+              "type": "select",
+              "prop": "multiple",
+              "label": "是否多选",
+              "options": [
+                { "label": "否", "prop": "false" },
+                { "label": "是", "prop": "true" }
+              ]
+            }
+          ],
+          [
+            {
+              "type": "select",
+              "prop": "readOnly",
+              "label": "是否只读",
+              "options": [
+                { "label": "否", "prop": "false" },
+                { "label": "是", "prop": "true" }
+              ]
+            }
+          ]
+        ]
+      },
+      {
+        "type": "list",
+        "prop": "options",
+        "config": [
+          [
+            {
+              "type": "input",
+              "prop": "label",
+              "label": "标签",
+              "defVal": "",
+              "inputType": "text"
+            },
+            {
+              "type": "input",
+              "prop": "value",
+              "label": "值",
+              "defVal": "",
+              "inputType": "text"
+            },
+            {
+              "type": "select",
+              "prop": "disabled",
+              "label": "禁用",
+              "options": [
+                { "label": "否", "prop": "false" },
+                { "label": "是", "prop": "true" }
+              ]
+            }
+          ]
+        ],
+        "defVal": {
+          "label": "新选项",
+          "value": "new_option",
+          "disabled": "false",
+          "selected": "false"
+        }
+      }
+    ],
+    "configStyles": ["size", "border", "spacing", "alignment"],
+    "configEvents": ["change"],
+    "configData": [
+      { "label": "选项数据", "prop": "options", "callback": "refreshOptions" },
+      { "label": "选中数据", "prop": "value", "callback": "refreshValue" },
+      {
+        "prop": "readOnly",
+        "pathLabel": "只读绑定",
+        "noData": true,
+        "callback": "refreshReadOnly"
+      }
+    ]
+  },
+  "table": {
+    "name": "表格",
+    "props": {
+      "className": "component table",
+      "headerColor": "#ffffff",
+      "bodyColor": "#ffffff",
+      "bodyRows": "10",
+      "columns": [
+        { "label": "列1", "prop": "c1", "width": "100px", "sort": "true" },
+        { "label": "列2", "prop": "c2", "width": "100px" },
+        { "label": "列3", "prop": "c3", "width": "100px" }
+      ],
+      "buttons": [],
+      "bindings": []
+    },
+    "styles": {
+      "borderWidth": "1px",
+      "borderColor": "#bebaba",
+      "borderStyle": "solid",
+      "borderRadius": "3px",
+      "overflow": "auto",
+      "margin": "0px",
+      "padding": "0px",
+      "width": "100%",
+      "height": "100%"
+    },
+    "events": {},
+    "data": {
+      "rows": {
+        "path": "",
+        "data": [
+          { "c1": "数据1-1", "c2": "数据1-2", "c3": "数据1-3" },
+          { "c1": "数据2-1", "c2": "数据2-2", "c3": "数据2-3" },
+          { "c1": "数据3-1", "c2": "数据3-2", "c3": "数据3-3" },
+          { "c1": "数据4-1", "c2": "数据4-2", "c3": "数据4-3" }
+        ]
+      }
+    },
+    "configProps": [
+      {
+        "config": [
+          [
+            {
+              "type": "input",
+              "prop": "className",
+              "label": "样式类名",
+              "defVal": "",
+              "inputType": "text"
+            }
+          ],
+          [
+            {
+              "type": "select",
+              "prop": "stickyHeader",
+              "label": "表头固定",
+              "options": [
+                { "label": "否", "prop": "false" },
+                { "label": "是", "prop": "true" }
+              ]
+            },
+            {
+              "type": "input",
+              "prop": "headerColor",
+              "label": "表头颜色",
+              "defVal": "",
+              "inputType": "color"
+            }
+          ],
+          [
+            {
+              "type": "input",
+              "prop": "bodyRows",
+              "label": "表体行数",
+              "defVal": "10",
+              "inputType": "number"
+            },
+            {
+              "type": "input",
+              "prop": "bodyColor",
+              "label": "表体颜色",
+              "defVal": "",
+              "inputType": "color"
+            }
+          ]
+        ]
+      },
+      {
+        "title": "列信息",
+        "type": "list",
+        "prop": "columns",
+        "config": [
+          [
+            {
+              "type": "input",
+              "prop": "label",
+              "label": "列名",
+              "defVal": "",
+              "inputType": "text"
+            },
+            {
+              "type": "input",
+              "prop": "prop",
+              "label": "属性",
+              "defVal": "",
+              "inputType": "text"
+            }
+          ],
+          [
+            {
+              "type": "select",
+              "prop": "alignTh",
+              "label": "表头排布",
+              "options": [
+                { "label": "无", "prop": "" },
+                { "label": "左对齐", "prop": "start" },
+                { "label": "居中", "prop": "center" },
+                { "label": "右对齐", "prop": "end" }
+              ]
+            },
+            {
+              "type": "select",
+              "prop": "alignTd",
+              "label": "数据排布",
+              "options": [
+                { "label": "无", "prop": "" },
+                { "label": "左对齐", "prop": "start" },
+                { "label": "居中", "prop": "center" },
+                { "label": "右对齐", "prop": "end" }
+              ]
+            },
+            {
+              "type": "select",
+              "prop": "sticky",
+              "label": "列固定",
+              "options": [
+                { "label": "无", "prop": "" },
+                { "label": "左", "prop": "left" },
+                { "label": "右", "prop": "right" }
+              ]
+            }
+          ],
+          [
+            {
+              "type": "input",
+              "prop": "width",
+              "label": "宽度",
+              "defVal": "",
+              "inputType": "text"
+            },
+            {
+              "type": "select",
+              "prop": "sort",
+              "label": "点击排序",
+              "options": [
+                { "label": "否", "prop": "false" },
+                { "label": "是", "prop": "true" }
+              ]
+            }
+          ],
+          [
+            {
+              "type": "textarea",
+              "prop": "click",
+              "label": "点击事件",
+              "defVal": "",
+              "rows": 5
+            }
+          ],
+          [
+            {
+              "type": "textarea",
+              "prop": "format",
+              "label": "格式化",
+              "defVal": "",
+              "rows": 3
+            }
+          ]
+        ],
+        "child": "children",
+        "defVal": { "label": "新列", "prop": "cn", "width": "100px" }
+      },
+      {
+        "title": "按钮信息",
+        "type": "list",
+        "prop": "buttons",
+        "config": [
+          [
+            {
+              "type": "input",
+              "prop": "label",
+              "label": "名称",
+              "defVal": "",
+              "inputType": "text"
+            },
+            {
+              "type": "input",
+              "prop": "prop",
+              "label": "属性",
+              "defVal": "",
+              "inputType": "text"
+            },
+            {
+              "type": "select",
+              "prop": "style",
+              "label": "风格",
+              "options": [
+                { "label": "默认", "prop": "default" },
+                { "label": "文本", "prop": "text" },
+                { "label": "主要", "prop": "primary" },
+                { "label": "成功", "prop": "success" },
+                { "label": "危险", "prop": "danger" }
+              ]
+            }
+          ],
+          [
+            {
+              "type": "textarea",
+              "prop": "click",
+              "label": "点击事件",
+              "defVal": ""
+            }
+          ]
+        ],
+        "defVal": { "label": "测试", "prop": "test", "style": "default", "click": "" }
+      },
+      {
+        "title": "按钮绑定",
+        "type": "list",
+        "prop": "bindings",
+        "config": [
+          [
+            {
+              "type": "input",
+              "prop": "prop",
+              "label": "属性",
+              "defVal": "",
+              "inputType": "text"
+            },
+            {
+              "type": "input",
+              "prop": "buttons",
+              "label": "按钮集合",
+              "defVal": "",
+              "inputType": "text"
+            }
+          ]
+        ],
+        "defVal": { "prop": "c1", "buttons": "test" }
+      }
+    ],
+    "configStyles": ["size", "border", "spacing"],
+    "configEvents": [],
+    "configData": [
+      {
+        "label": "行数据",
+        "prop": "rows",
+        "callback": "refreshTbody"
+      },
+      {
+        "label": "列数据",
+        "prop": "columns",
+        "callback": "refreshTable"
+      }
+    ]
+  },
+  "radio": {
+    "type": "radio",
+    "name": "单选框",
+    "props": {
+      "className": "component radio",
+      "name": "radio1",
+      "options": [
+        { "label": "选项1", "value": "1" },
+        { "label": "选项2", "value": "2" }
+      ]
+    },
+    "styles": {
+      "gridAutoFlow": "column"
+    },
+    "events": {},
+    "configProps": [
+      {
+        "config": [
+          [
+            {
+              "type": "input",
+              "prop": "className",
+              "label": "样式类名",
+              "defVal": "",
+              "inputType": "text"
+            }
+          ],
+          [
+            {
+              "type": "input",
+              "prop": "name",
+              "label": "组名",
+              "defVal": "",
+              "inputType": "text"
+            },
+            {
+              "type": "input",
+              "prop": "prop",
+              "label": "数据属性",
+              "defVal": "",
+              "inputType": "text"
+            }
+          ]
+        ]
+      },
+      {
+        "type": "list",
+        "prop": "options",
+        "config": [
+          [
+            {
+              "type": "input",
+              "prop": "label",
+              "label": "标签",
+              "defVal": "",
+              "inputType": "text"
+            },
+            {
+              "type": "input",
+              "prop": "value",
+              "label": "值",
+              "defVal": "",
+              "inputType": "text"
+            }
+          ],
+          [
+            {
+              "type": "select",
+              "prop": "disabled",
+              "label": "禁用",
+              "options": [
+                { "label": "否", "prop": "false" },
+                { "label": "是", "prop": "true" }
+              ]
+            }
+          ]
+        ],
+        "defVal": {
+          "label": "新选项",
+          "value": "new_option",
+          "disabled": "false"
+        }
+      }
+    ],
+    "configStyles": ["size", "border", "spacing", "alignment"],
+    "configEvents": ["change"],
+    "configData": [
+      { "label": "选项数据", "prop": "options", "callback": "refreshOptions" },
+      { "label": "选中数据", "prop": "value", "callback": "refreshValue" }
+    ]
+  },
+  "checkbox": {
+    "type": "checkbox",
+    "name": "复选框",
+    "props": {
+      "className": "component checkbox",
+      "name": "checkbox1",
+      "options": [
+        { "label": "选项1", "value": "1" },
+        { "label": "选项2", "value": "2" }
+      ]
+    },
+    "styles": {
+      "gridAutoFlow": "column"
+    },
+    "events": {},
+    "configProps": [
+      {
+        "config": [
+          [
+            {
+              "type": "input",
+              "prop": "className",
+              "label": "样式类名",
+              "defVal": "",
+              "inputType": "text"
+            }
+          ],
+          [
+            {
+              "type": "input",
+              "prop": "name",
+              "label": "组名",
+              "defVal": "",
+              "inputType": "text"
+            },
+            {
+              "type": "input",
+              "prop": "prop",
+              "label": "数据属性",
+              "defVal": "",
+              "inputType": "text"
+            }
+          ]
+        ]
+      },
+      {
+        "type": "list",
+        "prop": "options",
+        "config": [
+          [
+            {
+              "type": "input",
+              "prop": "label",
+              "label": "标签",
+              "defVal": "",
+              "inputType": "text"
+            },
+            {
+              "type": "input",
+              "prop": "value",
+              "label": "值",
+              "defVal": "",
+              "inputType": "text"
+            }
+          ],
+          [
+            {
+              "type": "select",
+              "prop": "disabled",
+              "label": "禁用",
+              "options": [
+                { "label": "否", "prop": "false" },
+                { "label": "是", "prop": "true" }
+              ]
+            }
+          ]
+        ],
+        "defVal": {
+          "label": "新选项",
+          "value": "new_option",
+          "disabled": "false"
+        }
+      }
+    ],
+    "configStyles": ["size", "border", "spacing", "alignment"],
+    "configEvents": ["change"],
+    "configData": [
+      { "label": "选项数据", "prop": "options", "callback": "refreshOptions" },
+      { "label": "选中数据", "prop": "value", "callback": "refreshValue" }
+    ]
+  },
+  "tree": {
+    "type": "tree",
+    "name": "树",
+    "props": {
+      "className": "component tree",
+      "nodes": [
+        {
+          "label": "节点1",
+          "value": "1",
+          "children": [
+            { "label": "子节点1-1", "value": "1-1" },
+            {
+              "label": "子节点1-2",
+              "value": "1-2",
+              "children": [
+                { "label": "孙节点1-2-1", "value": "1-2-1" }
+              ]
+            }
+          ]
+        },
+        { "label": "节点2", "value": "2" }
+      ]
+    },
+    "styles": {
+      "width": "300px",
+      "height": "400px",
+      "padding": "10px",
+      "borderWidth": "1px",
+      "borderColor": "#ddd",
+      "borderStyle": "solid",
+      "borderRadius": "4px"
+    },
+    "events": {},
+    "data": null,
+    "configStyles": ["font", "size", "border", "spacing", "alignment"],
+    "configEvents": ["change"],
+    "configProps": [
+      {
+        "config": [
+          [
+            {
+              "type": "input",
+              "prop": "className",
+              "label": "样式类名",
+              "defVal": "",
+              "inputType": "text"
+            }
+          ],
+          [
+            {
+              "type": "input",
+              "prop": "prop",
+              "label": "数据属性",
+              "defVal": "",
+              "inputType": "text"
+            }
+          ]
+        ]
+      },
+      {
+        "type": "list",
+        "prop": "nodes",
+        "config": [
+          [
+            {
+              "type": "input",
+              "prop": "label",
+              "label": "标签",
+              "defVal": "新节点",
+              "inputType": "text"
+            },
+            {
+              "type": "input",
+              "prop": "value",
+              "label": "值",
+              "defVal": "",
+              "inputType": "text"
+            }
+          ]
+        ],
+        "child": "children",
+        "defVal": {
+          "label": "新节点",
+          "value": "new_node"
+        }
+      }
+    ],
+    "configData": [
+      {
+        "noData": true,
+        "pathLabel": "节点数据路径",
+        "prop": "nodes",
+        "callback": "refreshTree"
+      }
+    ]
+  },
+  "linechart": {
+    "name": "图表",
+    "props": {
+      "className": "component line-chart",
+      "legendPos": "top",
+      "yIndices": [
+        {
+          "prop": "sales",
+          "title": "销售量",
+          "unit": "元",
+          "showUnit": "true",
+          "position": "left"
+        },
+        {
+          "prop": "ratio",
+          "title": "增长率",
+          "unit": "%",
+          "showUnit": "true",
+          "position": "right"
+        }
+      ],
+      "legends": [
+        { "prop": "c1", "type": "bar", "label": "数据1", "color": "#f1293a", "yIndex": "sales" },
+        { "prop": "c2", "type": "line", "label": "数据2", "color": "#17e732", "yIndex": "ratio" },
+        { "prop": "c3", "type": "area", "label": "数据3", "color": "#3c57f5", "yIndex": "sales" }
+      ]
+    },
+    "styles": {
+      "width": "100%",
+      "height": "100%",
+      "borderWidth": "1px",
+      "borderColor": "#bebaba",
+      "borderStyle": "solid",
+      "borderRadius": "3px",
+      "overflow": "auto",
+      "margin": "0px",
+      "padding": "0px"
+    },
+    "events": {},
+    "data": {
+      "data": {
+        "data": {
+          "labels": ["1月", "2月", "3月", "4月", "5月", "6月"],
+          "data": [
+            { "c1": 100, "c2": 80, "c3": 180 },
+            { "c1": 150, "c2": 100, "c3": 200 },
+            { "c1": 80, "c2": 50, "c3": 150 },
+            { "c1": 120, "c2": 100, "c3": 100 },
+            { "c1": 180, "c2": 30, "c3": 80 },
+            { "c1": 200, "c2": 20, "c3": 220 }
+          ]
+        }
+      }
+    },
+    "configProps": [
+      {
+        "config": [
+          [
+            {
+              "type": "input",
+              "prop": "className",
+              "label": "样式类名",
+              "defVal": "",
+              "inputType": "text"
+            }
+          ],
+          [
+            {
+              "type": "input",
+              "prop": "title",
+              "label": "标题",
+              "defVal": "",
+              "inputType": "text"
+            }
+          ]
+        ]
+      },
+      {
+        "type": "list",
+        "prop": "yIndices",
+        "config": [
+          [
+            {
+              "type": "input",
+              "prop": "title",
+              "label": "Y轴标题",
+              "defVal": "",
+              "inputType": "text"
+            },
+            {
+              "type": "input",
+              "prop": "prop",
+              "label": "Y轴属性",
+              "defVal": "y",
+              "inputType": "text"
+            }
+          ],
+          [
+            {
+              "type": "select",
+              "prop": "showUnit",
+              "label": "展示单位",
+              "options": [
+                { "label": "是", "prop": "true" },
+                { "label": "否", "prop": "false" }
+              ]
+            },
+            {
+              "type": "input",
+              "prop": "unit",
+              "label": "Y轴单位",
+              "inputType": "text",
+              "defVal": ""
+            }
+          ],
+          [
+            {
+              "type": "select",
+              "prop": "position",
+              "label": "Y轴位置",
+              "options": [
+                { "label": "左", "prop": "left" },
+                { "label": "右", "prop": "right" }
+              ]
+            },
+            {
+              "type": "input",
+              "prop": "width",
+              "label": "宽度",
+              "defVal": "80",
+              "inputType": "number"
+            }
+          ],
+          [
+            {
+              "type": "textarea",
+              "prop": "formatter",
+              "label": "格式化",
+              "rows": 5,
+              "defVal": ""
+            }
+          ]
+        ],
+        "defVal": {
+          "title": "",
+          "prop": "y",
+          "unit": "",
+          "showUnit": "true",
+          "position": "left",
+          "zeroStart": "false"
+        }
+      },
+      {
+        "type": "list",
+        "prop": "legends",
+        "config": [
+          [
+            {
+              "type": "input",
+              "prop": "prop",
+              "label": "数据属性",
+              "defVal": "c1",
+              "inputType": "text"
+            },
+            {
+              "type": "input",
+              "prop": "label",
+              "label": "图例标签",
+              "defVal": "标签1",
+              "inputType": "text"
+            },
+            {
+              "type": "input",
+              "prop": "yIndex",
+              "label": "绑定Y轴",
+              "defVal": "y",
+              "inputType": "text"
+            }
+          ],
+          [
+            {
+              "type": "select",
+              "prop": "type",
+              "label": "图例类型",
+              "options": [
+                { "label": "柱状图", "prop": "bar" },
+                { "label": "折线图", "prop": "line" },
+                { "label": "面积图", "prop": "area" }
+              ]
+            },
+            {
+              "type": "input",
+              "prop": "color",
+              "label": "图例颜色",
+              "inputType": "color",
+              "defVal": "#0964ecff"
+            }
+          ]
+        ],
+        "defVal": {
+          "prop": "c1",
+          "type": "bar",
+          "yIndex": "y",
+          "label": "数据1",
+          "color": "#3e8ed0"
+        }
+      }
+    ],
+    "configStyles": ["size", "border", "spacing"],
+    "configEvents": [],
+    "configData": [
+      {
+        "pathLabel": "配置路径",
+        "dataLbel": "配置数据",
+        "prop": "config",
+        "callback": "refreshConfig"
+      },
+      {
+        "pathLabel": "数据路径",
+        "dataLbel": "数据",
+        "prop": "data",
+        "callback": "refreshData"
+      }
+    ]
+  },
+  "klinechart": {
+    "name": "K线图",
+    "props": {
+      "className": "component kline-chart",
+      "title": "",
+      "maList": [
+        { "title": "5日均线", "prop": "ma5", "color": "#ff9900" },
+        { "title": "10日均线", "prop": "ma10", "color": "#9900ff" },
+        { "title": "30日均线", "prop": "ma30", "color": "#0099ff" },
+        { "title": "60日均线", "prop": "ma60", "color": "#ff00ff" }
+      ]
+    },
+    "styles": {
+      "width": "100%",
+      "height": "100%",
+      "borderWidth": "1px",
+      "borderColor": "#bebaba",
+      "borderStyle": "solid",
+      "borderRadius": "3px",
+      "overflow": "auto",
+      "margin": "0px",
+      "padding": "0px"
+    },
+    "events": {},
+    "data": {
+      "data": {
+        "data": {
+          "labels": [
+            "1月", "2月", "3月", "4月", "5月", "6月",
+            "7月", "8月", "9月", "10月"
+          ],
+          "data": [
+            { "open": 10, "latest": 20, "high": 30, "low": 5, "share": 10, "amount": 300 },
+            { "open": 20, "latest": 15, "high": 25, "low": 10, "share": 20, "amount": 500 },
+            { "open": 15, "latest": 20, "high": 25, "low": 5, "share": 30, "amount": 700 },
+            { "open": 20, "latest": 10, "high": 25, "low": 5, "share": 40, "amount": 900 },
+            { "open": 10, "latest": 15, "high": 20, "low": 5, "share": 50, "amount": 1100 },
+            { "open": 15, "latest": 20, "high": 25, "low": 5, "share": 60, "amount": 1300 }
+          ]
+        }
+      }
+    },
+    "configProps": [
+      {
+        "config": [
+          [
+            {
+              "type": "input",
+              "prop": "className",
+              "label": "样式类名",
+              "defVal": "",
+              "inputType": "text"
+            }
+          ],
+          [
+            {
+              "type": "input",
+              "prop": "title",
+              "label": "标题",
+              "defVal": "",
+              "inputType": "text"
+            }
+          ],
+          [
+            {
+              "type": "textarea",
+              "prop": "klineFormatter",
+              "label": "K线格式化",
+              "rows": 5,
+              "defVal": ""
+            }
+          ],
+          [
+            {
+              "type": "textarea",
+              "prop": "shareFormatter",
+              "label": "成交量格式化",
+              "rows": 5,
+              "defVal": ""
+            }
+          ],
+          [
+            {
+              "type": "textarea",
+              "prop": "amountFormatter",
+              "label": "成交额格式化",
+              "rows": 5,
+              "defVal": ""
+            }
+          ]
+        ]
+      },
+      {
+        "type": "list",
+        "prop": "maList",
+        "config": [
+          [
+            {
+              "type": "input",
+              "prop": "title",
+              "label": "均线标题",
+              "defVal": "",
+              "inputType": "text"
+            },
+            {
+              "type": "input",
+              "prop": "prop",
+              "label": "均线属性",
+              "defVal": "",
+              "inputType": "text"
+            },
+            {
+              "type": "input",
+              "prop": "color",
+              "label": "均线颜色",
+              "inputType": "color",
+              "defVal": ""
+            }
+          ]
+        ],
+        "defVal": {
+          "title": "",
+          "prop": "",
+          "color": ""
+        }
+      }
+    ],
+    "configStyles": ["size", "border", "spacing"],
+    "configEvents": [],
+    "configData": [
+      {
+        "pathLabel": "配置路径",
+        "dataLbel": "配置数据",
+        "prop": "config",
+        "callback": "refreshConfig"
+      },
+      {
+        "pathLabel": "数据路径",
+        "dataLbel": "数据",
+        "prop": "data",
+        "callback": "refreshData"
+      }
+    ]
+  },
+  "tabheader": {
+    "name": "Tab页头",
+    "props": {
+      "className": "component tab-header",
+      "prop": "",
+      "styleType": "classic",
+      "tabs": [
+        { "label": "标签1", "value": "tab1", "disable": "false" },
+        { "label": "标签2", "value": "tab2", "disable": "false" }
+      ]
+    },
+    "styles": {
+      "gridAutoFlow": "column",
+      "borderWidth": "1px",
+      "borderColor": "#bebaba",
+      "borderStyle": "solid",
+      "borderRadius": "3px",
+      "overflow": "auto",
+      "margin": "0px",
+      "padding": "0px"
+    },
+    "events": { "change": "" },
+    "configProps": [
+      {
+        "config": [
+          [
+            {
+              "type": "input",
+              "prop": "className",
+              "label": "样式类名",
+              "defVal": "",
+              "inputType": "text"
+            }
+          ],
+          [
+            {
+              "type": "select",
+              "prop": "styleType",
+              "label": "按钮风格",
+              "options": [
+                { "label": "经典", "prop": "classic" },
+                { "label": "卡片", "prop": "card" },
+                { "label": "简约", "prop": "simple" }
+              ]
+            }
+          ]
+        ]
+      },
+      {
+        "type": "list",
+        "prop": "tabs",
+        "config": [
+          [
+            {
+              "type": "input",
+              "prop": "label",
+              "label": "标签名称",
+              "defVal": "",
+              "inputType": "text"
+            }
+          ],
+          [
+            {
+              "type": "input",
+              "prop": "value",
+              "label": "标签键值",
+              "defVal": "",
+              "inputType": "text"
+            },
+            {
+              "type": "select",
+              "prop": "disable",
+              "label": "禁用",
+              "options": [
+                { "label": "否", "prop": "false" },
+                { "label": "是", "prop": "true" }
+              ]
+            }
+          ]
+        ],
+        "defVal": {
+          "label": "新标签",
+          "value": "new_tab",
+          "disable": "false",
+          "active": "false"
+        }
+      }
+    ],
+    "configStyles": ["direction", "size", "border", "spacing", "alignment"],
+    "configEvents": ["change"],
+    "configData": [
+      {
+        "pathLabel": "激活路径",
+        "noData": false,
+        "prop": "active",
+        "callback": "refreshActive"
+      }
+    ]
+  },
+  "tabbody": {
+    "name": "Tab内容区",
+    "props": {
+      "className": "component tab-body",
+      "prop": ""
+    },
+    "styles": {
+      "gridAutoFlow": "column",
+      "borderWidth": "1px",
+      "borderColor": "#bebaba",
+      "borderStyle": "solid",
+      "borderRadius": "3px",
+      "overflow": "auto",
+      "margin": "0px",
+      "padding": "0px"
+    },
+    "events": {},
+    "configProps": [
+      {
+        "config": [
+          [
+            {
+              "type": "input",
+              "prop": "className",
+              "label": "样式类名",
+              "defVal": "",
+              "inputType": "text"
+            }
+          ]
+        ]
+      }
+    ],
+    "configStyles": ["direction", "size", "border", "spacing", "alignment"],
+    "configEvents": [],
+    "configChildren": ["container"],
+    "configData": [
+      {
+        "pathLabel": "激活路径",
+        "noData": false,
+        "prop": "active",
+        "callback": "refreshActive"
+      }
+    ]
+  },
+  "date": {
+    "name": "日期选择",
+    "props": {
+      "className": "component date",
+      "value": "",
+      "placeholder": "请选择日期",
+      "dateFormat": "yyyy-MM-dd"
+    },
+    "styles": {
+      "width": "150px",
+      "height": "30px",
+      "borderWidth": "1px",
+      "borderColor": "#bebaba",
+      "borderStyle": "solid",
+      "borderRadius": "3px",
+      "overflow": "auto",
+      "margin": "0px",
+      "padding": "0px"
+    },
+    "events": { "change": "" },
+    "data": {
+      "value": { "path": "" }
+    },
+    "configProps": [
+      {
+        "config": [
+          [
+            {
+              "type": "input",
+              "prop": "className",
+              "label": "样式类名",
+              "defVal": "",
+              "inputType": "text"
+            }
+          ],
+          [
+            {
+              "type": "input",
+              "prop": "value",
+              "label": "默认值",
+              "defVal": "",
+              "inputType": "text"
+            }
+          ],
+          [
+            {
+              "type": "input",
+              "prop": "placeholder",
+              "label": "占位符",
+              "defVal": "请选择日期",
+              "inputType": "text"
+            }
+          ],
+          [
+            {
+              "type": "input",
+              "prop": "dateFormat",
+              "label": "日期格式",
+              "defVal": "yyyy-MM-dd",
+              "inputType": "text"
+            }
+          ]
+        ]
+      }
+    ],
+    "configStyles": ["size", "border", "spacing", "alignment"],
+    "configEvents": ["change"],
+    "configData": [
+      {
+        "prop": "value",
+        "pathLabel": "数据绑定",
+        "noData": true,
+        "callback": "refreshValue"
+      },
+      {
+        "prop": "show",
+        "pathLabel": "显示绑定",
+        "noData": true,
+        "callback": "refreshShow"
+      }
+    ]
+  },
+  "time": {
+    "name": "时间选择",
+    "props": {
+      "className": "component time",
+      "value": "",
+      "placeholder": "请选择时间",
+      "timeFormat": "HH:mm:ss"
+    },
+    "styles": {
+      "width": "150px",
+      "height": "30px",
+      "borderWidth": "1px",
+      "borderColor": "#bebaba",
+      "borderStyle": "solid",
+      "borderRadius": "3px",
+      "overflow": "auto",
+      "margin": "0px",
+      "padding": "0px"
+    },
+    "events": { "change": "" },
+    "data": {
+      "value": { "path": "" }
+    },
+    "configProps": [
+      {
+        "config": [
+          [
+            {
+              "type": "input",
+              "prop": "className",
+              "label": "样式类名",
+              "defVal": "",
+              "inputType": "text"
+            }
+          ],
+          [
+            {
+              "type": "input",
+              "prop": "value",
+              "label": "默认值",
+              "defVal": "",
+              "inputType": "text"
+            }
+          ],
+          [
+            {
+              "type": "input",
+              "prop": "placeholder",
+              "label": "占位符",
+              "defVal": "请选择时间",
+              "inputType": "text"
+            }
+          ],
+          [
+            {
+              "type": "input",
+              "prop": "timeFormat",
+              "label": "时间格式",
+              "defVal": "HH:mm:ss",
+              "inputType": "text"
+            }
+          ]
+        ]
+      }
+    ],
+    "configStyles": ["size", "border", "spacing", "alignment"],
+    "configEvents": ["change"],
+    "configData": [
+      {
+        "prop": "value",
+        "pathLabel": "数据绑定",
+        "noData": true,
+        "callback": "refreshValue"
+      },
+      {
+        "prop": "show",
+        "pathLabel": "显示绑定",
+        "noData": true,
+        "callback": "refreshShow"
+      }
+    ]
+  }
+}

@@ -118,7 +118,7 @@ export default class DslParser {
     if (child.styles.width && parent.styles.width) {
       const cvu = Val.extract(child.styles.width);
       const pvu = Val.extract(parent.styles.width);
-      if (cvu[2] == "%" && pvu[2] != "%") {
+      if (cvu && pvu && cvu[2] === "%" && pvu[2] !== "%") {
         child.styles.width =
           (parseFloat(pvu[1]) * parseFloat(cvu[1])) / 100 + pvu[2];
       }
@@ -127,7 +127,7 @@ export default class DslParser {
     if (child.styles.height && parent.styles.height) {
       const cvu = Val.extract(child.styles.height);
       const pvu = Val.extract(parent.styles.height);
-      if (cvu[2] == "%" && pvu[2] != "%") {
+      if (cvu && pvu && cvu[2] === "%" && pvu[2] !== "%") {
         child.styles.height =
           (parseFloat(pvu[1]) * parseFloat(cvu[1])) / 100 + pvu[2];
       }

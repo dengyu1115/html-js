@@ -1,7 +1,7 @@
 export default class Http {
   static request(url, method, param, callback) {
     fetch(url, {
-      method: method,
+      method,
       headers: {
         "Content-Type": "application/json",
       },
@@ -15,8 +15,7 @@ export default class Http {
       })
       .then(callback)
       .catch((error) => {
-        console.log(error);
-        alert(error);
+        console.error(error);
       });
   }
 }

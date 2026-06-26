@@ -21,7 +21,7 @@ export default class Input extends Base {
   refreshReadOnly() {
     const path = this.data.readOnly?.path;
     if (path) {
-      this.element.readOnly = Reactive.get(data, path);
+      this.element.readOnly = Reactive.get(window.data, path);
     } else {
       this.element.readOnly = this.props.readOnly === "true";
     }
@@ -30,7 +30,7 @@ export default class Input extends Base {
   refreshDisabled() {
     const path = this.data.disabled?.path;
     if (path) {
-      this.element.disabled = Reactive.get(data, path);
+      this.element.disabled = Reactive.get(window.data, path);
     } else {
       this.element.disabled = this.props.disabled === "true";
     }
@@ -39,7 +39,7 @@ export default class Input extends Base {
   refreshValue() {
     const path = this.data.value?.path;
     if (path) {
-      this.value = Reactive.get(data, path);
+      this.value = Reactive.get(window.data, path);
     } else {
       this.value = this.props.value;
     }
@@ -49,14 +49,14 @@ export default class Input extends Base {
   refreshShow() {
     const path = this.data.show?.path;
     if (path) {
-      this.element.style.display = Reactive.get(data, path) ? "grid" : "none";
+      this.element.style.display = Reactive.get(window.data, path) ? "grid" : "none";
     }
   }
 
   update(prop) {
     const path = this.data[prop]?.path;
     if (path) {
-      this[prop] = Reactive.get(data, path);
+      this[prop] = Reactive.get(window.data, path);
     } else {
       this[prop] = this.props[prop];
     }

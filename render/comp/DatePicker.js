@@ -29,14 +29,14 @@ export default class DatePicker extends Base {
   refreshShow() {
     const path = this.data.show?.path;
     if (path) {
-      this.element.style.display = Reactive.get(data, path) ? "flex" : "none";
+      this.element.style.display = Reactive.get(window.data, path) ? "flex" : "none";
     }
   }
 
   refreshValue() {
     const path = this.data.value?.path;
     if (path) {
-      this.value = Reactive.get(data, path);
+      this.value = Reactive.get(window.data, path);
     } else {
       this.value = null;
     }
@@ -45,7 +45,7 @@ export default class DatePicker extends Base {
       // 显示清除按钮
       this.clearBtn.style.display = "flex";
     } else {
-      this.input.value = null;
+      this.input.value = "";
       this.clearBtn.style.display = "none";
     }
     const today = this.value ? this.parseDate(this.value) : new Date();
@@ -122,7 +122,7 @@ export default class DatePicker extends Base {
       this.changeHandle?.call(this);
       const path = this.data.value?.path;
       if (path) {
-        Reactive.set(data, path, this.value, this);
+        Reactive.set(window.data, path, this.value, this);
       }
     }
   }
@@ -313,7 +313,7 @@ export default class DatePicker extends Base {
       this.changeHandle?.call(this);
       const path = this.data.value?.path;
       if (path) {
-        Reactive.set(data, path, this.value, this);
+        Reactive.set(window.data, path, this.value, this);
       }
     }
     // 重新渲染日历以更新高亮效果

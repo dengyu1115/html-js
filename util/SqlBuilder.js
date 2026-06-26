@@ -46,26 +46,20 @@ export default class SqlBuilder {
     if (!template || !items || !Array.isArray(items) || items.length === 0)
       return "";
 
-    // 查找循环部分：用方括号 [] 括起来的部分，里面包含占位符
-    const loopPattern = /\[([^\[\]]*?\{.*?\}.*?)\]/;
-    const match = template.match(loopPattern);
+    // 替换所有循环部分：用方括号 [] 括起来的部分，里面包含占位符
+    const loopPattern = /\[([^\[\]]*?\{.*?\}.*?)\]/g;
+    let result = template;
+    let match;
 
-    if (match) {
-      // 提取循环部分（去掉方括号）
-      const loopPart = match[1]; // match[1] 是第一个捕获组，即方括号内的内容
-      // 获取循环部分前和后的固定部分
-      const beforeLoop = template.substring(0, match.index);
-      const afterLoop = template.substring(match.index + match[0].length);
+    while ((match = loopPattern.exec(template)) !== null) {
+      const loopPart = match[1];
       const sqlParts = [];
       for (const item of items) {
-        const part = SqlBuilder.one(loopPart, item);
-        sqlParts.push(part);
+        sqlParts.push(SqlBuilder.one(loopPart, item));
       }
-      // 将前缀 + 循环部分处理结果 + 后缀
-      return beforeLoop + sqlParts.join(",") + afterLoop;
-    } else {
-      throw new Error("模板格式错误");
+      result = result.replace(match[0], sqlParts.join(","));
     }
+    return result;
   }
 
   /**
@@ -82,6 +76,9 @@ export default class SqlBuilder {
       return `'${value.replace(/'/g, "''")}'`;
     }
     if (typeof value === "number" || typeof value === "boolean") {
+      if (Number.isNaN(value)) {
+        return "NULL";
+      }
       return String(value);
     }
     if (value instanceof Date) {

@@ -17,14 +17,16 @@ export default class Invoker {
   asyncInvoke(name, param, success, fail) {
     const id = Id.random();
     this.map.set(id, { success, fail });
-    setTimeout(() => {
-      native.asyncInvoke(name, id, JSON.stringify(param));
-    }, 0);
+    native.asyncInvoke(name, id, JSON.stringify(param));
   }
 
   asyncCallback(id, param) {
+    const entry = this.map.get(id);
+    if (!entry) return;
+    this.map.delete(id);
+
     const res = JSON.parse(param);
-    const { success, fail } = this.map.get(id);
+    const { success, fail } = entry;
     if (res.code === "success") {
       success(res.data);
     } else {
