@@ -4,6 +4,8 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   overscroll-behavior: none;
   font-size: 14px;
+  color: #333;
+  line-height: 1.5;
 }
 
 *,

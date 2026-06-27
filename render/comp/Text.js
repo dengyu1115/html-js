@@ -1,8 +1,8 @@
-import Reactive from "../../util/Reactive.js";
+import Bindable from "./Bindable.js";
 import Showable from "./Showable.js";
 import Base from "./Base.js";
 
-export default class Text extends Showable(Base) {
+export default class Text extends Bindable(Showable(Base)) {
   render() {
     const element = this.createElement(this.props.tag);
     this.element = element;
@@ -12,12 +12,6 @@ export default class Text extends Showable(Base) {
   }
 
   refreshText() {
-    const path = this.data.text?.path;
-    if (path) {
-      const text = Reactive.get(data, path);
-      this.element.textContent = text;
-    } else {
-      this.element.textContent = this.props.text;
-    }
+    this.refreshProp("text", "textContent");
   }
 }

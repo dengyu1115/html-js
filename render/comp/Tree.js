@@ -3,7 +3,6 @@ import Base from "./Base.js";
 
 export default class Tree extends Base {
   render() {
-    // 创建容器元素
     const element = this.createElement("div");
     this.element = element;
     const tree = document.createElement("ul");
@@ -11,6 +10,8 @@ export default class Tree extends Base {
     this.tree = tree;
     tree.style.paddingLeft = "0";
     tree.style.margin = "0";
+    this.updateNodes();
+    this.buildTree();
     return element;
   }
 

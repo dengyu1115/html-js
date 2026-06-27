@@ -8,14 +8,15 @@
     "styles": {
       "gridAutoFlow": "column",
       "borderWidth": "1px",
-      "borderColor": "#bebaba",
+      "borderColor": "#e0e0e0",
       "borderStyle": "solid",
-      "borderRadius": "3px",
+      "borderRadius": "6px",
       "overflow": "auto",
       "margin": "0px",
       "padding": "0px",
       "width": "1280px",
-      "height": "768px"
+      "height": "768px",
+      "backgroundColor": "#fafafa"
     },
     "events": {},
     "configProps": [
@@ -83,14 +84,15 @@
     "styles": {
       "gridAutoFlow": "column",
       "borderWidth": "1px",
-      "borderColor": "#bebaba",
+      "borderColor": "#e8e8e8",
       "borderStyle": "solid",
-      "borderRadius": "3px",
+      "borderRadius": "6px",
       "overflow": "auto",
       "margin": "0px",
       "width": "50%",
       "height": "50%",
-      "padding": "0px"
+      "padding": "12px",
+      "backgroundColor": "#ffffff"
     },
     "events": {},
     "configProps": [
@@ -148,9 +150,9 @@
       "height": "50%",
       "backgroundColor": "#ffffff",
       "borderWidth": "1px",
-      "borderColor": "#bebaba",
+      "borderColor": "#e0e0e0",
       "borderStyle": "solid",
-      "borderRadius": "5px",
+      "borderRadius": "6px",
       "boxShadow": "0 4px 8px rgba(0,0,0,0.1)",
       "zIndex": "1000"
     },
@@ -218,13 +220,9 @@
     },
     "styles": {
       "gridAutoFlow": "column",
-      "borderWidth": "1px",
-      "borderColor": "#bebaba",
-      "borderStyle": "solid",
-      "borderRadius": "3px",
       "overflow": "auto",
       "margin": "0px",
-      "padding": "0px"
+      "padding": "4px"
     },
     "events": { "click": "" },
     "data": {
@@ -292,12 +290,15 @@
     },
     "styles": {
       "borderWidth": "1px",
-      "borderColor": "#bebaba",
+      "borderColor": "#d9d9d9",
       "borderStyle": "solid",
-      "borderRadius": "3px",
+      "borderRadius": "4px",
       "overflow": "auto",
       "margin": "0px",
-      "padding": "0px"
+      "padding": "0 8px",
+      "width": "200px",
+      "height": "32px",
+      "backgroundColor": "#ffffff"
     },
     "events": { "input": "", "focus": "", "blur": "" },
     "configProps": [
@@ -410,13 +411,14 @@
     },
     "styles": {
       "borderWidth": "1px",
-      "borderColor": "#bebaba",
+      "borderColor": "#d9d9d9",
       "borderStyle": "solid",
-      "borderRadius": "3px",
+      "borderRadius": "4px",
       "overflow": "auto",
       "margin": "0px",
-      "padding": "5px",
-      "resize": "vertical"
+      "padding": "8px",
+      "resize": "vertical",
+      "backgroundColor": "#ffffff"
     },
     "events": { "input": "", "focus": "", "blur": "", "change": "" },
     "configProps": [
@@ -540,13 +542,14 @@
       "text": "按钮"
     },
     "styles": {
-      "borderWidth": "1px",
-      "borderColor": "#bebaba",
+      "borderWidth": "0px",
       "borderStyle": "solid",
-      "borderRadius": "3px",
+      "borderRadius": "4px",
       "overflow": "auto",
       "margin": "0px",
-      "padding": "0px"
+      "padding": "6px 16px",
+      "backgroundColor": "#1890ff",
+      "color": "#ffffff"
     },
     "events": { "click": "" },
     "configProps": [
@@ -605,12 +608,13 @@
     "styles": {
       "gridAutoFlow": "column",
       "borderWidth": "1px",
-      "borderColor": "#bebaba",
+      "borderColor": "#e8e8e8",
       "borderStyle": "solid",
-      "borderRadius": "3px",
+      "borderRadius": "6px",
       "overflow": "auto",
       "margin": "0px",
-      "padding": "0px"
+      "padding": "12px",
+      "backgroundColor": "#ffffff"
     },
     "events": {},
     "data": {
@@ -683,16 +687,17 @@
       "readOnly": "false"
     },
     "styles": {
-      "width": "100px",
-      "height": "30px",
+      "width": "200px",
+      "height": "32px",
       "gridAutoFlow": "column",
       "borderWidth": "1px",
-      "borderColor": "#bebaba",
+      "borderColor": "#d9d9d9",
       "borderStyle": "solid",
-      "borderRadius": "3px",
+      "borderRadius": "4px",
       "overflow": "auto",
       "margin": "0px",
-      "padding": "0px"
+      "padding": "0px",
+      "backgroundColor": "#ffffff"
     },
     "events": { "change": "" },
     "data": {
@@ -803,14 +808,15 @@
     },
     "styles": {
       "borderWidth": "1px",
-      "borderColor": "#bebaba",
+      "borderColor": "#e8e8e8",
       "borderStyle": "solid",
-      "borderRadius": "3px",
+      "borderRadius": "6px",
       "overflow": "auto",
       "margin": "0px",
       "padding": "0px",
       "width": "100%",
-      "height": "100%"
+      "height": "100%",
+      "backgroundColor": "#ffffff"
     },
     "events": {},
     "data": {
@@ -1063,7 +1069,9 @@
       ]
     },
     "styles": {
-      "gridAutoFlow": "column"
+      "gridAutoFlow": "column",
+      "gap": "8px",
+      "padding": "4px"
     },
     "events": {},
     "configProps": [
@@ -1154,7 +1162,9 @@
       ]
     },
     "styles": {
-      "gridAutoFlow": "column"
+      "gridAutoFlow": "column",
+      "gap": "8px",
+      "padding": "4px"
     },
     "events": {},
     "configProps": [
@@ -1259,11 +1269,12 @@
     "styles": {
       "width": "300px",
       "height": "400px",
-      "padding": "10px",
+      "padding": "12px",
       "borderWidth": "1px",
-      "borderColor": "#ddd",
+      "borderColor": "#e8e8e8",
       "borderStyle": "solid",
-      "borderRadius": "4px"
+      "borderRadius": "6px",
+      "backgroundColor": "#ffffff"
     },
     "events": {},
     "data": null,
@@ -1360,12 +1371,13 @@
       "width": "100%",
       "height": "100%",
       "borderWidth": "1px",
-      "borderColor": "#bebaba",
+      "borderColor": "#e8e8e8",
       "borderStyle": "solid",
-      "borderRadius": "3px",
+      "borderRadius": "6px",
       "overflow": "auto",
       "margin": "0px",
-      "padding": "0px"
+      "padding": "12px",
+      "backgroundColor": "#ffffff"
     },
     "events": {},
     "data": {
@@ -1570,12 +1582,13 @@
       "width": "100%",
       "height": "100%",
       "borderWidth": "1px",
-      "borderColor": "#bebaba",
+      "borderColor": "#e8e8e8",
       "borderStyle": "solid",
-      "borderRadius": "3px",
+      "borderRadius": "6px",
       "overflow": "auto",
       "margin": "0px",
-      "padding": "0px"
+      "padding": "12px",
+      "backgroundColor": "#ffffff"
     },
     "events": {},
     "data": {
@@ -1712,12 +1725,13 @@
     "styles": {
       "gridAutoFlow": "column",
       "borderWidth": "1px",
-      "borderColor": "#bebaba",
+      "borderColor": "#e8e8e8",
       "borderStyle": "solid",
-      "borderRadius": "3px",
+      "borderRadius": "6px",
       "overflow": "auto",
       "margin": "0px",
-      "padding": "0px"
+      "padding": "0px",
+      "backgroundColor": "#fafafa"
     },
     "events": { "change": "" },
     "configProps": [
@@ -1806,12 +1820,13 @@
     "styles": {
       "gridAutoFlow": "column",
       "borderWidth": "1px",
-      "borderColor": "#bebaba",
+      "borderColor": "#e8e8e8",
       "borderStyle": "solid",
-      "borderRadius": "3px",
+      "borderRadius": "6px",
       "overflow": "auto",
       "margin": "0px",
-      "padding": "0px"
+      "padding": "12px",
+      "backgroundColor": "#ffffff"
     },
     "events": {},
     "configProps": [
@@ -1850,15 +1865,16 @@
       "dateFormat": "yyyy-MM-dd"
     },
     "styles": {
-      "width": "150px",
-      "height": "30px",
+      "width": "200px",
+      "height": "32px",
       "borderWidth": "1px",
-      "borderColor": "#bebaba",
+      "borderColor": "#d9d9d9",
       "borderStyle": "solid",
-      "borderRadius": "3px",
+      "borderRadius": "4px",
       "overflow": "auto",
       "margin": "0px",
-      "padding": "0px"
+      "padding": "0px",
+      "backgroundColor": "#ffffff"
     },
     "events": { "change": "" },
     "data": {
@@ -1932,15 +1948,16 @@
       "timeFormat": "HH:mm:ss"
     },
     "styles": {
-      "width": "150px",
-      "height": "30px",
+      "width": "200px",
+      "height": "32px",
       "borderWidth": "1px",
-      "borderColor": "#bebaba",
+      "borderColor": "#d9d9d9",
       "borderStyle": "solid",
-      "borderRadius": "3px",
+      "borderRadius": "4px",
       "overflow": "auto",
       "margin": "0px",
-      "padding": "0px"
+      "padding": "0px",
+      "backgroundColor": "#ffffff"
     },
     "events": { "change": "" },
     "data": {
