@@ -1,4 +1,5 @@
 import ConfigFactory from "./ConfigFactory.js";
+import { createElement } from "./utils/dom.js";
 import FormRenderer from "./FormRenderer.js";
 
 export default class PropPanel {
@@ -20,7 +21,7 @@ export default class PropPanel {
   _renderSection(def) {
     const rows = [];
     if (def.title) {
-      rows.push(this._buildTitle(def.title));
+      rows.push(createElement("div", { className: "form-row", textContent: def.title }));
     }
     if (def.type === "list") {
       if (!this.props[def.prop]) {
@@ -34,13 +35,6 @@ export default class PropPanel {
       rows.push(...new FormRenderer(this.props, () => this.onChange()).render(def.config));
     }
     return rows;
-  }
-
-  _buildTitle(title) {
-    const div = document.createElement("div");
-    div.classList.add("form-row");
-    div.innerText = title;
-    return div;
   }
 
   _getListContainer(prop) {
@@ -72,59 +66,51 @@ export default class PropPanel {
     elements.forEach((el) => container.appendChild(el));
   }
 
-  _buildRemoveBtn(def, data, index, parentStack) {
+  _buildBtn(text, onClick) {
     const btn = document.createElement("button");
-    btn.textContent = "删除";
-    btn.addEventListener("click", () => {
+    btn.textContent = text;
+    btn.addEventListener("click", onClick);
+    return btn;
+  }
+
+  _buildRemoveBtn(def, data, index, parentStack) {
+    return this._buildBtn("删除", () => {
       data.splice(index, 1);
       this._refreshList(def, data, parentStack);
       this.onChange();
     });
-    return btn;
   }
 
   _buildCopyBtn(def, data, index, parentStack) {
-    const btn = document.createElement("button");
-    btn.textContent = "复制";
-    btn.addEventListener("click", () => {
+    return this._buildBtn("复制", () => {
       const copied = JSON.parse(JSON.stringify(data[index]));
       data.splice(index + 1, 0, copied);
       this._refreshList(def, data, parentStack);
       this.onChange();
     });
-    return btn;
   }
 
   _buildAddBtn(def, data, defVal, parentStack) {
-    const btn = document.createElement("button");
-    btn.textContent = "添加";
-    btn.addEventListener("click", () => {
+    return this._buildBtn("添加", () => {
       data.push({ ...defVal });
       this._refreshList(def, data, parentStack);
       this.onChange();
     });
-    return btn;
   }
 
   _buildChildBtn(def, datum, parentStack) {
-    const btn = document.createElement("button");
-    btn.textContent = "下级";
-    btn.addEventListener("click", () => {
+    return this._buildBtn("下级", () => {
       if (!datum[def.child]) {
         datum[def.child] = [];
       }
       this._refreshList(def, datum[def.child], parentStack);
     });
-    return btn;
   }
 
   _buildParentBtn(def, parentStack) {
-    const btn = document.createElement("button");
-    btn.textContent = "上级";
-    btn.addEventListener("click", () => {
+    return this._buildBtn("上级", () => {
       const popped = parentStack.pop();
       this._refreshList(def, popped, parentStack);
     });
-    return btn;
   }
 }

@@ -1,6 +1,6 @@
 import ConfigFactory from "./ConfigFactory.js";
 import FormRenderer from "./FormRenderer.js";
-import { STYLE_CONFIG_MAP } from "./styleConfig.js";
+import STYLE_CONFIG_MAP from "./styleConfig.json" with { type: "json" };
 
 export default class StylePanel {
   constructor(component, onChange) {

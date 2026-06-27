@@ -7,7 +7,7 @@ import DataPanel from "./DataPanel.js";
 import DslPanel from "./DslPanel.js";
 import TemplatePanel from "./TemplatePanel.js";
 import ConfigFactory from "./ConfigFactory.js";
-import { createElement } from "./utils/dom.js";
+import { createElement, clearChildren, appendChildren } from "./utils/dom.js";
 import { deepClone, cloneComp, initCompMap } from "./utils/clone.js";
 
 export default class Designer {
@@ -47,90 +47,50 @@ export default class Designer {
     });
     this.elements.leftPanel.appendChild(this.elements.leftToggleBtns);
 
-    const compTreeActions = {
-      clearAll: () => this.clearAllComp(),
-      selectComp: (compId) => {
-        this.state.sldComp = this.state.compMap[compId];
-        if (this.state.sldComp) {
-          this.showInspector(this.state.sldComp);
-        }
-      },
-      moveComp: (compId, dir) => this.moveComp(compId, dir),
-      copyComp: (compId) => this.copyComp(compId),
-      deleteComp: (compId) => this.deleteComp(compId),
-      focusComp: (compId) => this.focusComp(compId),
-      saveAsTemplate: (comp) => this.templatePanel.showSaveModal(comp),
-      createComp: (type, parentComp) => this.createComp(type, parentComp),
-      createFromTemplate: () => this.templatePanel.createFromTemplate(),
+    const sharedActions = {
+      refreshTree: () => this.compTreePanel.renderCompTree(),
+      renderPreview: () => this.renderPreview(),
     };
 
     this.compTreePanel = new CompTreePanel({
       state: this.state,
-      actions: compTreeActions,
-    });
-
-    this.elements.compBtn = createElement("button", {
-      className: "btn toggle-btn active",
-      id: "compBtn",
-      textContent: "组件树",
-    });
-    this.elements.compBtn.addEventListener("click", () =>
-      this.switchPanel("left", "comp"),
-    );
-    this.elements.leftToggleBtns.appendChild(this.elements.compBtn);
-    this.elements.compPanel = this.compTreePanel.createPanel();
-    this.elements.leftPanel.appendChild(this.elements.compPanel);
-
-    const dslActions = {
-      loadData: (root) => this.showInspector(root),
-      refreshTree: () => this.compTreePanel.renderCompTree(),
-      renderPreview: () => this.renderPreview(),
-      clearPreview: () => {
-        this.elements.previewPanel.innerHTML = "";
+      actions: {
+        ...sharedActions,
+        clearAll: () => this.clearAllComp(),
+        selectComp: (compId) => {
+          this.state.sldComp = this.state.compMap[compId];
+          if (this.state.sldComp) this.showInspector(this.state.sldComp);
+        },
+        moveComp: (compId, dir) => this.moveComp(compId, dir),
+        copyComp: (compId) => this.copyComp(compId),
+        deleteComp: (compId) => this.deleteComp(compId),
+        focusComp: (compId) => this.focusComp(compId),
+        saveAsTemplate: (comp) => this.templatePanel.showSaveModal(comp),
+        createComp: (type, parentComp) => this.createComp(type, parentComp),
+        createFromTemplate: () => this.templatePanel.createFromTemplate(),
       },
-      clearDslContent: () => {
-        this.dslPanel.elements.dslContent.value = "";
-      },
-    };
+    });
 
     this.dslPanel = new DslPanel({
       state: this.state,
-      actions: dslActions,
+      actions: {
+        ...sharedActions,
+        loadData: (root) => this.showInspector(root),
+        clearPreview: () => { this.elements.previewPanel.innerHTML = ""; },
+        clearDslContent: () => { this.dslPanel.elements.dslContent.value = ""; },
+      },
     });
-
-    this.elements.dslBtn = createElement("button", {
-      className: "btn toggle-btn",
-      id: "dslBtn",
-      textContent: "DSL",
-    });
-    this.elements.dslBtn.addEventListener("click", () =>
-      this.switchPanel("left", "dsl"),
-    );
-    this.elements.leftToggleBtns.appendChild(this.elements.dslBtn);
-    this.elements.dslPanel = this.dslPanel.createPanel();
-    this.elements.leftPanel.appendChild(this.elements.dslPanel);
-
-    const templateActions = {
-      refreshTree: () => this.compTreePanel.renderCompTree(),
-      renderPreview: () => this.renderPreview(),
-    };
 
     this.templatePanel = new TemplatePanel({
       state: this.state,
-      actions: templateActions,
+      actions: { ...sharedActions },
     });
 
-    this.elements.templateBtn = createElement("button", {
-      className: "btn toggle-btn",
-      id: "templateBtn",
-      textContent: "模板",
-    });
-    this.elements.templateBtn.addEventListener("click", () =>
-      this.switchPanel("left", "template"),
-    );
-    this.elements.leftToggleBtns.appendChild(this.elements.templateBtn);
-    this.elements.templatePanel = this.templatePanel.createPanel();
-    this.elements.leftPanel.appendChild(this.elements.templatePanel);
+    [
+      { key: "comp", instanceKey: "compTreePanel", label: "组件树", active: true },
+      { key: "dsl", instanceKey: "dslPanel", label: "DSL" },
+      { key: "template", instanceKey: "templatePanel", label: "模板" },
+    ].forEach(({ key, instanceKey, label, active }) => this._createLeftPanelItem(key, instanceKey, label, active));
 
     this.leftPanels.push(
       this.elements.compPanel,
@@ -140,6 +100,21 @@ export default class Designer {
     this.elements.mainDiv.appendChild(this.elements.leftPanel);
 
     this.templatePanel.query();
+  }
+
+  _createLeftPanelItem(key, instanceKey, label, active) {
+    const btn = createElement("button", {
+      className: `btn toggle-btn${active ? " active" : ""}`,
+      id: key + "Btn",
+      textContent: label,
+    });
+    btn.addEventListener("click", () => this.switchPanel("left", key));
+    this.elements.leftToggleBtns.appendChild(btn);
+    this.elements[key + "Btn"] = btn;
+
+    const panel = this[instanceKey].createPanel();
+    this.elements[key + "Panel"] = panel;
+    this.elements.leftPanel.appendChild(panel);
   }
 
   createCenterPanel() {
@@ -162,12 +137,12 @@ export default class Designer {
 
     this.onChange = () => this.renderPreview();
 
-    ["prop", "style", "event", "data"].forEach((key) => {
-      const name = { prop: "属性", style: "样式", event: "事件", data: "数据" }[
-        key
-      ];
-      this.createPropPanel(key, name);
-    });
+    [
+      { key: "prop", name: "属性" },
+      { key: "style", name: "样式" },
+      { key: "event", name: "事件" },
+      { key: "data", name: "数据" },
+    ].forEach(({ key, name }) => this.createPropPanel(key, name));
 
     this.switchPanel("right", "prop");
     this.elements.mainDiv.appendChild(this.elements.rightPanel);
@@ -199,8 +174,8 @@ export default class Designer {
     const render = (id, children) => {
       const el = document.getElementById(id);
       if (el) {
-        el.innerHTML = "";
-        children.forEach((child) => el.appendChild(child));
+        clearChildren(el);
+        appendChildren(el, children);
       }
     };
     render("propPanel", new PropPanel(component, this.onChange).render());
@@ -284,15 +259,13 @@ export default class Designer {
   renderPreview() {
     let dsl;
     if (this.state.focusedComp) {
-      const units = new DslParser(
-        JSON.parse(JSON.stringify(this.state.root)),
-      ).transferUnit();
-      dsl = JSON.parse(JSON.stringify(this.state.focusedComp));
+      const units = new DslParser(deepClone(this.state.root)).transferUnit();
+      dsl = deepClone(this.state.focusedComp);
       const { width, height } = units[this.state.focusedComp.id];
       dsl.styles.width = width;
       dsl.styles.height = height;
     } else {
-      dsl = JSON.parse(JSON.stringify(this.state.root));
+      dsl = deepClone(this.state.root);
     }
     this.elements.previewPanel.innerHTML = "";
     this.elements.previewPanel.appendChild(new DslParser(dsl).parse().render());

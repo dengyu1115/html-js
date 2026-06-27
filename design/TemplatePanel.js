@@ -90,29 +90,20 @@ export default class TemplatePanel {
 
     const btnContainer = createElement("div", { className: "template-item-btns" });
 
-    const copyBtn = createElement("button", { className: "btn btn-sm", textContent: "❐", title: "复制模板" });
-    copyBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      this.state.clipboard = { type: "template", data: template };
-      this.actions.refreshTree();
-      alert("模板已复制，可以在组件下拉列表中选择并添加");
+    [
+      { text: "❐", title: "复制模板", onClick: () => {
+        this.state.clipboard = { type: "template", data: template };
+        this.actions.refreshTree();
+        alert("模板已复制，可以在组件下拉列表中选择并添加");
+      }},
+      { text: "✎", title: "编辑模板", onClick: () => this.showEditModal(template) },
+      { text: "x", title: "删除模板", onClick: () => this._delete(template.id) },
+    ].forEach(({ text, title, onClick }) => {
+      const btn = createElement("button", { className: "btn btn-sm", textContent: text, title });
+      btn.addEventListener("click", (e) => { e.stopPropagation(); onClick(); });
+      btnContainer.appendChild(btn);
     });
 
-    const editBtn = createElement("button", { className: "btn btn-sm", textContent: "✎", title: "编辑模板" });
-    editBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      this.showEditModal(template);
-    });
-
-    const deleteBtn = createElement("button", { className: "btn btn-sm", textContent: "x", title: "删除模板" });
-    deleteBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      this._delete(template.id);
-    });
-
-    btnContainer.appendChild(copyBtn);
-    btnContainer.appendChild(editBtn);
-    btnContainer.appendChild(deleteBtn);
     itemDiv.appendChild(nameDiv);
     itemDiv.appendChild(descDiv);
     itemDiv.appendChild(btnContainer);
@@ -164,7 +155,7 @@ export default class TemplatePanel {
     container.appendChild(content);
     container.appendChild(footer);
     modal.appendChild(overlay);
-    modal.appendChild(container);
+    overlay.appendChild(container);
 
     overlay.addEventListener("click", (e) => {
       if (e.target === overlay) document.body.removeChild(modal);
@@ -201,8 +192,8 @@ export default class TemplatePanel {
       id, name, description: desc,
       config: JSON.stringify(config),
     }, () => {
-      this.query();
       alert("模板保存成功");
+      this.query();
     });
   }
 
